@@ -10,7 +10,8 @@ print("Do you want to Auto-Update? [y/n]")
 
 updateagreeinput = input()
 
-if updateagreeinput == "y" or "Y":
+if updateagreeinput == "y" or updateagreeinput == "Y":
+    print("It can take some time....")
     os.system("git pull origin master")
     print("Dear Customer,\nplease restart this program.\nSorry for any inconveniences.")
     quit()
