@@ -3,7 +3,7 @@ import time
 import platform
 import subprocess
 
-clear = lambda: os.system('cls')
+clear = lambda: os.system('clear')
 
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
 
