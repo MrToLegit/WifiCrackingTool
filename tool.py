@@ -104,7 +104,7 @@ interfacecheck = input()
 times = 0
 
 while True:
-    if interfacecheck != "y" and not "Y":
+    if interfacecheck != "y" and interfacecheck != "Y":
         if times >= 5:
             clear()
             print("Do you want to switch the mode? [y/n]")
