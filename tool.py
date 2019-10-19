@@ -58,7 +58,7 @@ print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
 
 mode = input()
 
-while not mode == 1 and not mode == 2:
+while mode != 1 and mode != 2:
     print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
     modenew = input()
     mode = modenew
