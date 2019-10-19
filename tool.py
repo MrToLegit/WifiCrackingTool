@@ -12,7 +12,7 @@ updateagreeinput = input()
 
 if updateagreeinput == "y" or "Y":
     os.system("git pull origin master")
-    print("Dear Customer,\nplease restart this program.\nSorry for any inconvenience.")
+    print("Dear Customer,\nplease restart this program.\nSorry for any inconveniences.")
     quit()
 
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
