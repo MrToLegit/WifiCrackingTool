@@ -11,7 +11,7 @@ print("Do you want to Auto-Update? [y/n]")
 updateagreeinput = input()
 
 if updateagreeinput == "y" or updateagreeinput == "Y":
-    print("It can take some time....")
+    print("This can take some time....")
     os.system("git pull origin master")
     print("Dear Customer,\nplease restart this program.\nSorry for any inconveniences.")
     quit()
@@ -72,12 +72,12 @@ while mode != "1" and not "2":
     modenew = input()
     mode = modenew
 
-if mode == 1:
+if mode == "1":
     os.system("airmon-ng check kill")
     time.sleep(0.2)
     os.system("airmon-ng start " + wlaninput )
     time.sleep(0.2)
-elif mode == 2:
+elif mode == "2":
     os.system("airmon-ng check kill")
     time.sleep(0.2)
     os.system("iwconfig " + wlaninput + " mode monitor")
@@ -93,12 +93,12 @@ interfacecheck = input()
 
 while True:
     if interfacecheck != "y" and not "Y":
-        if mode == 1:
+        if mode == "1":
             os.system("airmon-ng check kill")
             time.sleep(0.2)
             os.system("airmon-ng start " + wlaninput )
             time.sleep(0.2)
-        elif mode == 2:
+        elif mode == "2":
             os.system("airmon-ng check kill")
             time.sleep(0.2)
             os.system("iwconfig " + wlaninput + " mode monitor")
