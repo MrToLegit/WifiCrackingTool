@@ -2,6 +2,7 @@ import os
 import time
 import platform
 import subprocess
+import netifaces
 
 clear = lambda: os.system('clear')
 
@@ -35,20 +36,16 @@ wlaninput = input()
 if wlaninput == "":
     wlaninput = "wlan0"
 
-check = subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True)
+def is_interface_up(interface):
+    addr = netifaces.ifaddresses(interface)
+    return netifaces.AF_INET in addr
 
-while True:
-    if check != "dormant":
-        print("Interface not found or is not online.")
-        wlaninput1 = input()
-
-        if wlaninput1 == "":
-            wlaninput1 = "wlan0"
-
-        wlaninput = wlaninput1
-        check = subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True)
-    else:
-        break
+while not is_interface_up(wlaninput):
+    print("Interface not found or is not online.")
+    wlaninput1 = input()
+    if wlaninput1 == "":
+        wlaninput1 = "wlan0"
+    wlaninput = wlaninput1
 
 clear()
 
