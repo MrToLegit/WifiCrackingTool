@@ -171,7 +171,7 @@ clear()
 print("Instuction:\nPlease select a wifi network from the now listed wifi networks.\n!IMPORTANT!\n Please save the bssid, channel and optionaly the wifi name.\nIf you find your Network press CTRL + C\nThis script will automatically keep going after 5 seconds.")
 time.sleep(5)
 
-Popen("airodump-ng " + wlaninput, creationflags=CREATE_NEW_CONSOLE)
+subprocess.call("start /wait airodump-ng " + wlaninput, shell=True)
 
 print("Please enter of the network the bssid")
 
@@ -195,7 +195,7 @@ print("Instuction:\nPlease wait for incomming connections.\n!IMPORTANT!\nIf didn
 time.sleep(5)
 
 clear()
-Popen("airodump -c "+channel+" --bssid " + bssid + " -w record.cap " + wlaninput, creationflags=CREATE_NEW_CONSOLE)
+subprocess.call("start /wait airodump -c "+channel+" --bssid " + bssid + " -w record.cap " + wlaninput, shell=True)
 
 clear()
 
