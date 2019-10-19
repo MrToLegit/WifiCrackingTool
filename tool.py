@@ -156,4 +156,5 @@ while True:
     else:
         break
 
+print("Thank you for using this tool.\nBye.")
 webbrowser.open('https://www.youtube.com/watch?v=oOlft8xFdlY')
