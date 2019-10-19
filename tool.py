@@ -17,14 +17,15 @@ if updateagreeinput == "y" or updateagreeinput == "Y":
     print("\nDear Customer,\nplease restart this program.\nSorry for any inconveniences.")
     quit()
 
-print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
+print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMaschine.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
 
 print("Do you agree that this script is only for educational use? [y/n]")
 
 agreeinput = input()
 
-if agreeinput != "y" and not "Y":
+if agreeinput != "y" and agreeinput != "Y":
     print("How dare you?")
+    webbrowser.open('https://www.youtube.com/watch?v=TMrtLsQbaok&t=56')
     quit()
 
 print("I hope it for you.\n")
