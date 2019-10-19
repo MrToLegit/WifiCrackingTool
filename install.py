@@ -4,11 +4,16 @@ import time
 
 clear = lambda: os.system('clear')
 
+colorgreen = "\033[0;0;32m"
+colorreset = "\033[0m"
+colorred = "\033[0;0;31m"
+colorblue = "\033[0;0;34m"
+
 if platform.system() != "Linux":
-    print("You can run this script only on Linux based devices.")
+    print(colorred + "You can run this script only on Linux based devices." + colorreset)
     quit()
 
-print("Welcome to the autoinstaller. Please wait this can take some time....")
+print(colorgreen+"Welcome to the autoinstaller. Please wait this can take some time....")
 time.sleep(1)
 
 os.system("apt-get update -y")
@@ -17,4 +22,4 @@ os.system("apt-get install python3 -y")
 
 os.system("python3 -m pip install netifaces")
 
-print("Succesfully installed everything!\nNow you can run the program with 'python3 tool.py'")
+print("Succesfully installed everything!\nNow you can run the program with 'python3 tool.py'" + colorreset)

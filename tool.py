@@ -7,19 +7,26 @@ import webbrowser
 
 clear = lambda: os.system('clear')
 
-print("Ellie, do you want to Auto-Update? [y/n]")
+colorgreen = "\033[0;0;32m"
+colorreset = "\033[0m"
+colorred = "\033[0;0;31m"
+colorblue = "\033[0;0;34m"
+
+print(colorgreen + "Do you want to check for updates? [y/n]")
+
+
 
 updateagreeinput = input()
 
 if updateagreeinput == "y" or updateagreeinput == "Y":
     print("This can take some time....")
     os.system("git pull origin master")
-    print("\nDear Customer,\nplease restart this program.\nSorry for any inconveniences.")
+    print(colorblue + "\nDear Customer,\nplease restart this program.\nSorry for any inconveniences." + colorreset)
     quit()
 
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMaschine.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
 
-print("Do you agree that this script is only for educational use? [y/n]")
+print(colorred + "Do you agree that this script is only for educational use? [y/n]")
 
 agreeinput = input()
 
@@ -28,17 +35,17 @@ if agreeinput != "y" and agreeinput != "Y":
     webbrowser.open('https://www.youtube.com/watch?v=TMrtLsQbaok&t=56')
     quit()
 
-print("I hope it for you.\n")
+print("I hope it for you.\n" + colorreset)
 
 if platform.system() != "Linux":
-    print("You can run this script only on Linux based devices.")
+    print(colorred + "You can run this script only on Linux based devices." + colorreset)
     quit()
 
 time.sleep(0.2)
 
 clear()
 
-print("Here are your interfaces:")
+print(colorgreen + "Here are your interfaces:")
 os.system("iwconfig")
 
 print("Please enter your interface name. \nDefault: wlan0")
@@ -57,7 +64,7 @@ def is_interface_up(interface1):
 print("\n" + str(is_interface_up(wlaninput)))
 
 while not is_interface_up(wlaninput):
-    print("Interface not found or is not online.")
+    print(colorred + "Interface not found or is not online." + colorreset)
     wlaninput1 = input()
     if wlaninput1 == "":
         wlaninput1 = "wlan0"
@@ -65,7 +72,7 @@ while not is_interface_up(wlaninput):
 
 clear()
 
-print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
+print(colorgreen+"Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
 
 mode = input()
 
