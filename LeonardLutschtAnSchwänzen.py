@@ -53,15 +53,15 @@ while mode != 1 and not 2:
     mode = modenew
 
 def function_mode_1():
-    os.system("airmon-ng check kill")
+    subprocess.call("airmon-ng check kill", shell=True)
     time.sleep(0.2)
-    os.system("airmon-ng start " + wlaninput)
+    subprocess.call("airmon-ng start " + wlaninput , shell=True)
     time.sleep(0.2)
 
 def function_mode_2():
-    os.system("airmon-ng check kill")
+    subprocess.call("airmon-ng check kill", shell=True)
     time.sleep(0.2)
-    os.system("iwconfig " + wlaninput + " mode monitor")
+    subprocess.call("iwconfig " + wlaninput + " mode monitor", shell=True)
     time.sleep(0.2)
 
 if mode == 1:
@@ -75,16 +75,21 @@ print("Is the interface in monitor mode? [y/n]")
 
 interfacecheck = input()
 
-while interfacecheck != "y" and not "Y":
-    if mode == 1:
-        function_mode_1()
-    elif mode == 2:
-        function_mode_2()
+while True:
+    if interfacecheck != "y" and not "Y":
+        if mode == 1:
+            function_mode_1()
+        elif mode == 2:
+            function_mode_2()
 
-    os.system("iwconfig " + wlaninput)
+        os.system("iwconfig " + wlaninput)
 
-    print("Is the interface now in monitor mode? [y/n]")
+        print("Is the interface now in monitor mode? [y/n]")
 
-    interfacecheck1 = input()
+        interfacecheck1 = input()
 
-    interfacecheck = interfacecheck1
+        interfacecheck = interfacecheck1
+    else:
+        break
+
+print("Gud Gud my soldier")
