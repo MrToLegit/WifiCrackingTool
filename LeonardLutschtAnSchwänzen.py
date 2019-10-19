@@ -6,6 +6,9 @@ import netifaces
 
 clear = lambda: os.system('clear')
 
+def devlog(msg):
+    print("DevLog: " + msg)
+
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
 
 print("Do you agree that this script is only for educational use? [y/n]")
@@ -39,6 +42,8 @@ if wlaninput == "":
 def is_interface_up(interface):
     addr = netifaces.ifaddresses(interface)
     return netifaces.AF_INET in addr
+
+devlog(is_interface_up(wlaninput))
 
 while not is_interface_up(wlaninput):
     print("Interface not found or is not online.")
