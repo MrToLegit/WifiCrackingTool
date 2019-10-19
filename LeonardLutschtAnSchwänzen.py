@@ -32,14 +32,14 @@ wlaninput = input()
 if wlaninput == "":
     wlaninput = "wlan0"
 
-#while subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True) != "dormant":
-#    print("Interface not found or is not online.")
-#    wlaninput1 = input()
-#
-#    if wlaninput1 == "":
-#        wlaninput1 = "wlan0"
-#
-#    wlaninput = wlaninput1
+while subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True) != "dormant":
+    print("Interface not found or is not online.")
+    wlaninput1 = input()
+
+    if wlaninput1 == "":
+        wlaninput1 = "wlan0"
+
+    wlaninput = wlaninput1
 
 print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
 
