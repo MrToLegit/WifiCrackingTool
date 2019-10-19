@@ -6,7 +6,7 @@ import netifaces
 
 clear = lambda: os.system('clear')
 
-print("Do you want to Auto-Update? [y/n]")
+print("Ellie, do you want to Auto-Update? [y/n]")
 
 updateagreeinput = input()
 
