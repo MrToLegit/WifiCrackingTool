@@ -35,14 +35,20 @@ wlaninput = input()
 if wlaninput == "":
     wlaninput = "wlan0"
 
-while subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True) != "dormant":
-    print("Interface not found or is not online.")
-    wlaninput1 = input()
+check = subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True)
 
-    if wlaninput1 == "":
-        wlaninput1 = "wlan0"
+while True:
+    if check != "dormant":
+        print("Interface not found or is not online.")
+        wlaninput1 = input()
 
-    wlaninput = wlaninput1
+        if wlaninput1 == "":
+            wlaninput1 = "wlan0"
+
+        wlaninput = wlaninput1
+        check = subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shell=True)
+    else:
+        break
 
 clear()
 
