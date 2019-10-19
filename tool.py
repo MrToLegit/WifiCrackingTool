@@ -37,9 +37,11 @@ wlaninput = input()
 if wlaninput == "":
     wlaninput = "wlan0"
 
-def is_interface_up(interface):
-    addr = netifaces.ifaddresses(interface)
-    return netifaces.AF_INET in addr
+def is_interface_up(interface1):
+    interface_list = netifaces.interfaces()
+    if interface1 in interface_list:
+        return True
+    return False
 
 print("\n" + str(is_interface_up(wlaninput)))
 
