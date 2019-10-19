@@ -13,7 +13,7 @@ updateagreeinput = input()
 if updateagreeinput == "y" or updateagreeinput == "Y":
     print("This can take some time....")
     os.system("git pull origin master")
-    print("Dear Customer,\nplease restart this program.\nSorry for any inconveniences.")
+    print("\nDear Customer,\nplease restart this program.\nSorry for any inconveniences.")
     quit()
 
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
@@ -63,12 +63,12 @@ while not is_interface_up(wlaninput):
 
 clear()
 
-print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
+print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
 
 mode = input()
 
-while mode != "1" and not "2":
-    print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
+while mode != "1" and not "2" and not "3":
+    print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
     modenew = input()
     mode = modenew
 
@@ -82,6 +82,15 @@ elif mode == "2":
     time.sleep(0.2)
     os.system("iwconfig " + wlaninput + " mode monitor")
     time.sleep(0.2)
+elif mode == "3":
+    os.system("airmon-ng check kill")
+    time.sleep(0.2)
+    os.system("ifconfig "+wlaninput+" down")
+    time.sleep(0.2)
+    os.system("iwconfig " + wlaninput + " mode monitor")
+    time.sleep(0.2)
+    os.system("ifconfig "+wlaninput+" up")
+    time.sleep(0.2)
 
 clear()
 
@@ -91,8 +100,29 @@ print("Is the interface in monitor mode? [y/n]")
 
 interfacecheck = input()
 
+times = 0
+
 while True:
     if interfacecheck != "y" and not "Y":
+        if times >= 5:
+            clear()
+            print("Do you want to switch the mode? [y/n]")
+            question = input()
+            if question == "y" or question == "Y":
+                print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
+
+                mode88 = input()
+
+                while mode88 != "1" and not "2" and not "3":
+                    print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode\n[3] Ifconfig Down/Up")
+                    modenew = input()
+                    mode = modenew
+
+                times = 0
+                continue
+            else:
+                times = 0
+                continue
         if mode == "1":
             os.system("airmon-ng check kill")
             time.sleep(0.2)
@@ -103,6 +133,15 @@ while True:
             time.sleep(0.2)
             os.system("iwconfig " + wlaninput + " mode monitor")
             time.sleep(0.2)
+        elif mode == "3":
+            os.system("airmon-ng check kill")
+            time.sleep(0.2)
+            os.system("ifconfig "+wlaninput+" down")
+            time.sleep(0.2)
+            os.system("iwconfig " + wlaninput + " mode monitor")
+            time.sleep(0.2)
+            os.system("ifconfig "+wlaninput+" up")
+            time.sleep(0.2)
 
         os.system("iwconfig " + wlaninput)
 
@@ -111,6 +150,8 @@ while True:
         interfacecheck1 = input()
 
         interfacecheck = interfacecheck1
+
+        times = times + 1
     else:
         break
 
