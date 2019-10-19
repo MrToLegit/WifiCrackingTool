@@ -3,6 +3,7 @@ import time
 import platform
 import subprocess
 import netifaces
+import webbrowser
 
 clear = lambda: os.system('clear')
 
@@ -155,4 +156,4 @@ while True:
     else:
         break
 
-print("Gud Gud my soldier")
+webbrowser.open('https://www.youtube.com/watch?v=oOlft8xFdlY')
