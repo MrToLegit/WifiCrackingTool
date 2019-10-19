@@ -41,7 +41,7 @@ def is_interface_up(interface):
     addr = netifaces.ifaddresses(interface)
     return netifaces.AF_INET in addr
 
-print("\n" + is_interface_up(wlaninput))
+print("\n" + str(is_interface_up(wlaninput)))
 
 while not is_interface_up(wlaninput):
     print("Interface not found or is not online.")
