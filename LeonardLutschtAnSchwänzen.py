@@ -3,6 +3,7 @@ import time
 import platform
 import subprocess
 
+clear = lambda: os.system('cls')
 
 print("\033[0;0;32mWelcome to the WlanCrack automatic script. Made by ToLegit & MikeMike.\nIf you want to quit press simply CTRL and C. Please follow the steps.\nHave a nice day. \033[0m\n")
 
@@ -22,6 +23,8 @@ if platform.system() != "Linux":
 
 time.sleep(0.2)
 
+clear()
+
 print("Here are your interfaces:")
 os.system("iwconfig")
 
@@ -40,6 +43,8 @@ while subprocess.check_output("cat /sys/class/net/"+wlaninput+"/operstate", shel
         wlaninput1 = "wlan0"
 
     wlaninput = wlaninput1
+
+clear()
 
 print("Select mode:\n[1] Airmon-ng mode\n[2] Iwconfig mode")
 
@@ -68,6 +73,8 @@ if mode == 1:
     function_mode_1()
 elif mode == 2:
     function_mode_2()
+
+clear()
 
 os.system("iwconfig " + wlaninput)
 
