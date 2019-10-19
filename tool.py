@@ -23,7 +23,7 @@ print("Do you agree that this script is only for educational use? [y/n]")
 agreeinput = input()
 
 if agreeinput != "y" and not "Y":
-    print("You have to agree. Good bye.")
+    print("How dare you?")
     quit()
 
 print("I hope it for you.\n")
