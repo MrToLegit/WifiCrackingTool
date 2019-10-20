@@ -4,6 +4,7 @@ import platform
 import subprocess
 import netifaces
 import webbrowser
+import threading
 
 clear = lambda: os.system('clear')
 
@@ -179,11 +180,14 @@ print("Do you want to here interesting music in the background? [y/n]")
 crack = input()
 
 if crack == "y" and crack == "Y":
-    running_directory = os.path.dirname(os.path.realpath(__file__))
-    sound_file = running_directory + "/sound.mp3"
-    if os.path.isfile(sound_file):
-        import playsound 
-        playsound.playsound(sound_file, True)
+    def function_gay():
+        running_directory = os.path.dirname(os.path.realpath(__file__))
+        sound_file = running_directory + "/sound.mp3"
+        if os.path.isfile(sound_file):
+            import playsound 
+            playsound.playsound(sound_file, True)
+    thread = threading.Thread(target=function_gay)
+    thread.start()
 
 clear()
 
