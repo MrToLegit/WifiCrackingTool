@@ -21,5 +21,6 @@ os.system("apt-get update -y")
 os.system("apt-get install python3 -y")
 
 os.system("python3 -m pip install netifaces")
+os.system("python3 -m pip install playsound")
 
 print("Succesfully installed everything!\nNow you can run the program with 'python3 tool.py'" + colorreset)
