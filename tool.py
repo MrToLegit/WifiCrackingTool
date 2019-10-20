@@ -254,7 +254,6 @@ if modecrack == "1":
 
     print("Trying to start cracking. This can take some time....")
 
-    os.system("gnome-terminal -x aircrack-ng -w " + path + " -b " + bssid + " " + cfile)
-
+    os.system("aircrack-ng -w " + path + " -b " + bssid + " " + cfile)
 elif modecrack == "2":
     quit()
