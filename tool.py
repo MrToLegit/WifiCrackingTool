@@ -177,8 +177,7 @@ clear()
 
 print("Instuction:\nPlease select a wifi network from the now listed wifi networks.\n!IMPORTANT!\n Please save the bssid, channel and optionaly the wifi name.\nIf you find your Network press CTRL + C\nThis script will automatically keep going after 5 seconds.")
 time.sleep(5)
-
-subprocess.call("start /wait airodump-ng " + wlaninput, shell=True)
+os.system("gnome-terminal -x start /wait airodump-ng " + wlaninput)
 
 print("Please enter of the network the bssid")
 
@@ -202,7 +201,7 @@ print("Instuction:\nPlease wait for incomming connections.\n!IMPORTANT!\nIf didn
 time.sleep(5)
 
 clear()
-subprocess.call("start /wait airodump -c "+channel+" --bssid " + bssid + " -w record.cap " + wlaninput, shell=True)
+os.system("gnome-terminal -x start /wait airodump -c "+channel+" --bssid " + bssid + " -w record.cap " + wlaninput)
 
 clear()
 
@@ -239,12 +238,7 @@ if modecrack == "1":
 
     print("Trying to start cracking. This can take some time....")
 
-    result = subprocess.run("aircrack-ng -w " + path + " -b " + bssid + " " + cfile, stdout=subprocess.PIPE).stdout.decode('utf-8')
-
-    if "No valid WPA handshakes found" in result:
-        print("Failed to find handshakes.\nPlease restart the script")
-        quit()
-    quit()
+    os.system("gnome-terminal -x aircrack-ng -w " + path + " -b " + bssid + " " + cfile)
 
 elif modecrack == "2":
     quit()
