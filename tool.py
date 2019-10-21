@@ -176,21 +176,6 @@ if crack != "y" and crack != "Y":
 
 clear()
 
-print("Do you want to here interesting music in the background? [y/n]")
-crack = input()
-
-if crack == "y" and crack == "Y":
-    def function_gay():
-        running_directory = os.path.dirname(os.path.realpath(__file__))
-        sound_file = running_directory + "/sound.mp3"
-        if os.path.isfile(sound_file):
-            import playsound 
-            playsound.playsound(sound_file, True)
-    thread = threading.Thread(target=function_gay)
-    thread.start()
-
-clear()
-
 print("Instuction:\nPlease select a wifi network from the now listed wifi networks.\n!IMPORTANT!\n Please save the bssid, channel and optionaly the wifi name.\nIf you find your Network press CTRL + C\nThis script will automatically keep going after 5 seconds.")
 time.sleep(5)
 os.system("gnome-terminal -x start /wait airodump-ng " + wlaninput)
