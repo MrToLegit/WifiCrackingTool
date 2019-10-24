@@ -22,7 +22,7 @@ which way it should use to put your
 wifi card into monitor mode 
 
 it will automatically do airmon-ng check kill
-no mattr wich option you choose
+no matter wich option you choose
 
 while option
 1 is using airmon-ng (airmon-ng start [interface])
